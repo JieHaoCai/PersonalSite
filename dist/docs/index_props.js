@@ -1,11 +1,11 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
     'prev': undefined,
     'next': {
         "text": "VUE3 相关",
         "link": "docs/vue3.html"
     },
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "docs/index.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "docs/index.html",
@@ -17,7 +17,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -26,9 +26,11 @@ export default {
             __html: '<p>这里介绍了关于我本人</p>'
         } }),
     'toc': null,
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "这里介绍了关于我本人",
     'cover': undefined,

@@ -1,11 +1,11 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
     'prev': {
         "text": "前端代码规范插件配置",
         "link": "docs/codeRule.html"
     },
     'next': undefined,
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "docs/redux.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "docs/redux.html",
@@ -17,7 +17,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -50,9 +50,11 @@ export default {
                         React.createElement("a", { href: "#%E6%8E%A5%E6%94%B6%E6%96%B9" }, "\u63A5\u6536\u65B9")),
                     React.createElement("li", null,
                         React.createElement("a", { href: "#%E5%8F%91%E9%80%81%E6%96%B9" }, "\u53D1\u9001\u65B9")))))),
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "安装插件 react-redux redux:(react-redux 需要依赖于 redux 的 store) redux-thunk：异步 redux-devtools-extension:调试工具 配置 store 在 src 文件下，新建一个 store 的文件夹，里面需要有以下文件： - reducers 文件夹（...",
     'cover': undefined,

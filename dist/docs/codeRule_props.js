@@ -1,4 +1,4 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
     'prev': {
         "text": "VUE3 相关",
@@ -8,7 +8,7 @@ export default {
         "text": "使用 Redux",
         "link": "docs/redux.html"
     },
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "docs/codeRule.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "docs/codeRule.html",
@@ -20,7 +20,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -34,9 +34,11 @@ export default {
                 React.createElement("a", { href: "#%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD" }, "\u63D2\u4EF6\u4E0B\u8F7D")),
             React.createElement("li", null,
                 React.createElement("a", { href: "#%E9%85%8D%E7%BD%AE" }, "\u914D\u7F6E")))),
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "插件下载 1. 插件市场下载 eslint 2. 下载 Prettier 配置 在.vscode/settings.json 中进行配置 { \"files.eol\": \"\", \"editor.tabSize\": 4, \"editor.formatOnSave\": true, \"editor.defaultFormatter\": \"esbenp.prettier-vscode\",...",
     'cover': undefined,

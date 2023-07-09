@@ -1,4 +1,4 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
     'prev': {
         "text": "介绍",
@@ -8,7 +8,7 @@ export default {
         "text": "前端代码规范插件配置",
         "link": "docs/codeRule.html"
     },
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "docs/vue3.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "docs/vue3.html",
@@ -20,7 +20,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -68,9 +68,11 @@ export default {
                 React.createElement("a", { href: "#%E5%9C%A8-store-%E4%B8%AD%E7%9A%84-indexjs-%E8%BF%9B%E8%A1%8C%E5%BC%95%E5%85%A5" }, "\u5728 store \u4E2D\u7684 index.js \u8FDB\u884C\u5F15\u5165")),
             React.createElement("li", null,
                 React.createElement("a", { href: "#%E4%BD%BF%E7%94%A8%E6%8C%81%E4%B9%85%E5%8C%96" }, "\u4F7F\u7528\u6301\u4E45\u5316")))),
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "# npm 6.x npm create vite@latest 你的项目名称 --template vue # npm 7+, extra double-dash is needed: npm create vite@latest 你的项目名称 -- --template vue # yarn yarn create vite 你的项目名称 --template vue # pn...",
     'cover': "C:\\Users\\Administrator\\AppData\\Roaming\\Typora\\typora-user-images\\image-20230314103941461.png",

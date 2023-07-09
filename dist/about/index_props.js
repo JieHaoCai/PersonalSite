@@ -1,6 +1,6 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "about/index.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "about/index.html",
@@ -12,7 +12,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -47,9 +47,11 @@ export default {
                     React.createElement("li", null,
                         React.createElement("a", { href: "#%E5%AE%9E%E4%B9%A0%E7%BB%8F%E5%8E%86" }, "\u5B9E\u4E60\u7ECF\u5386"),
                         React.createElement("ol", null)))))),
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "这里是JsonTsai的个人网站 自我介绍 - 一名00后前端小白 - 三年学术项目 - 四年班级干部 - 一年实习经历 技术积累 CSDN: https://blog.csdn.net/m0_46983722 GitHub： https://github.com/JieHaoCai Gitee： Gitee：https://gi...",
     'cover': undefined

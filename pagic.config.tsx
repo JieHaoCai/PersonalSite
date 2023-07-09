@@ -1,6 +1,7 @@
 import { React } from 'https://deno.land/x/pagic@v1.6.3/mod.ts';
 
 export default {
+    root:'/PersonalSite/',
     theme:'docs',
     title:'叫我菜菜',
     description:'这是我的个人博客',

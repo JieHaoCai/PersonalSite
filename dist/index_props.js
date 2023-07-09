@@ -1,6 +1,6 @@
-import projectConfig from '/pagic.config.js';
+import projectConfig from '/PersonalSite/pagic.config.js';
 export default {
-    config: { "root": "/", ...projectConfig, branch: '' },
+    config: { "root": "/", ...projectConfig, branch: 'main' },
     'pagePath': "README.md",
     'layoutPath': "_layout.tsx",
     'outputPath': "index.html",
@@ -12,7 +12,7 @@ export default {
     'script': React.createElement(React.Fragment, null,
         React.createElement("script", { src: "https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js" }),
         React.createElement("script", { src: "https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js" }),
-        React.createElement("script", { src: "/index.js", type: "module" })),
+        React.createElement("script", { src: "/PersonalSite/index.js", type: "module" })),
     'footer': React.createElement("footer", null,
         "Power By",
         React.createElement("a", { href: "https://github.com/JieHaoCai", target: "_blank" }, "JsonTsai")),
@@ -29,9 +29,11 @@ export default {
                         React.createElement("a", { href: "#%E5%86%99%E7%BB%99%E8%87%AA%E5%B7%B1" }, "\u5199\u7ED9\u81EA\u5DF1")),
                     React.createElement("li", null,
                         React.createElement("a", { href: "#%E5%B8%8C%E6%9C%9B" }, "\u5E0C\u671B")))))),
-    'author': undefined,
-    'contributors': [],
-    'date': "2023-07-09T04:34:25.511Z",
+    'author': "caijiehao",
+    'contributors': [
+        "caijiehao"
+    ],
+    'date': "2023-07-09T04:41:29.000Z",
     'updated': null,
     'excerpt': "这个网站的初衷纯粹是由于我想记录下来所有的技术积累，以及分享给所有热爱技术的 coder 正是有万千 coder 的帮助和开源支持，才能成就一个个小小的 coder 只有站在巨人的肩膀上，才能看得更高，因此，所有技术积累全部开源！ ...",
     'cover': undefined
