@@ -1,0 +1,154 @@
+<!doctype html><html class=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="这是我的个人博客"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" property="og:title" content="前端代码规范插件配置 · 叫我菜菜"/><meta data-react-helmet="true" property="og:description" content="这是我的个人博客"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" name="twitter:card" content="summary"/>
+<title data-react-helmet="true">前端代码规范插件配置 · 叫我菜菜</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">叫我菜菜</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">叫我菜菜</a></h1></li><li class="hide_on_mobile"><a href="/docs/index.html">技术文档</a></li><li class="hide_on_mobile"><a href="/about/index.html">关于</a></li><li class="hide_on_mobile"><a href="https://github.com/xcatliu/pagic" target="_blank">本网站使用Pagic构建</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/JieHaoCai" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/docs/index.html" class="nav_link">介绍</a></li><li class=""><a href="/docs/vue3.html" class="nav_link">VUE3 相关</a></li><li class=""><a href="/docs/codeRule.html" class="nav_link active">前端代码规范插件配置</a></li><li class=""><a href="/docs/redux.html" class="nav_link">使用 Redux</a></li></ol></aside><section class="main"><div class="main_article"><article><h1>前端代码规范插件配置</h1>
+<h2 id="%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD">插件下载<a class="anchor" href="#%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD">§</a></h2>
+<ol>
+<li>插件市场下载 eslint</li>
+<li>下载 Prettier</li>
+</ol>
+<h2 id="%E9%85%8D%E7%BD%AE">配置<a class="anchor" href="#%E9%85%8D%E7%BD%AE">§</a></h2>
+<p>在.vscode/settings.json 中进行配置</p>
+<pre class="language-autoit"><code class="language-autoit">{
+    <span class="token string">"files.eol"</span><span class="token punctuation">:</span> <span class="token string">""</span><span class="token punctuation">,</span>
+    <span class="token string">"editor.tabSize"</span><span class="token punctuation">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+    <span class="token string">"editor.formatOnSave"</span><span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+    <span class="token string">"editor.defaultFormatter"</span><span class="token punctuation">:</span> <span class="token string">"esbenp.prettier-vscode"</span><span class="token punctuation">,</span>
+        <span class="token operator">/</span><span class="token operator">/</span> 启用保存时自动修复eslint<span class="token punctuation">,</span>默认只支持<span class="token punctuation">.</span>js文件
+    <span class="token string">"editor.codeActionsOnSave"</span><span class="token punctuation">:</span> {
+        <span class="token string">"source.fixAll.eslint"</span><span class="token punctuation">:</span> <span class="token boolean">true</span>
+    }<span class="token punctuation">,</span>
+    <span class="token string">"eslint.validate"</span><span class="token punctuation">:</span> <span class="token punctuation">[</span><span class="token string">"javascript"</span><span class="token punctuation">,</span> <span class="token string">"javascriptreact"</span><span class="token punctuation">,</span> <span class="token string">"typescript"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+    <span class="token string">"typescript.tsdk"</span><span class="token punctuation">:</span> <span class="token string">"node_modules/typescript/lib"</span>
+}
+
+</code></pre>
+<h1>Prettier</h1>
+<p>安装</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev prettier
+</code></pre>
+<p>根目录创建文件<strong>prettier.config.js</strong></p>
+<p>配置（直接复制即可）</p>
+<pre class="language-js"><code class="language-js"><span class="token comment">// prettier.config.js or .prettierrc.js</span>
+module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token comment">// 一行最多 100 字符</span>
+  printWidth<span class="token operator">:</span> <span class="token number">100</span><span class="token punctuation">,</span>
+  <span class="token comment">// 使用 4 个空格缩进</span>
+  tabWidth<span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  <span class="token comment">// 不使用缩进符，而使用空格</span>
+  useTabs<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 行尾需要有分号</span>
+  semi<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token comment">// 使用单引号</span>
+  singleQuote<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token comment">// 对象的 key 仅在必要时用引号</span>
+  quoteProps<span class="token operator">:</span> <span class="token string">"as-needed"</span><span class="token punctuation">,</span>
+  <span class="token comment">// jsx 不使用单引号，而使用双引号</span>
+  jsxSingleQuote<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 末尾不需要逗号</span>
+  trailingComma<span class="token operator">:</span> <span class="token string">"none"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 大括号内的首尾需要空格</span>
+  bracketSpacing<span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token comment">// jsx 标签的反尖括号需要换行</span>
+  jsxBracketSameLine<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 箭头函数，只有一个参数的时候，也需要括号</span>
+  arrowParens<span class="token operator">:</span> <span class="token string">"always"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 每个文件格式化的范围是文件的全部内容</span>
+  rangeStart<span class="token operator">:</span> <span class="token number">0</span><span class="token punctuation">,</span>
+  rangeEnd<span class="token operator">:</span> <span class="token number">Infinity</span><span class="token punctuation">,</span>
+  <span class="token comment">// 不需要写文件开头的 @prettier</span>
+  requirePragma<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 不需要自动在文件开头插入 @prettier</span>
+  insertPragma<span class="token operator">:</span> <span class="token boolean">false</span><span class="token punctuation">,</span>
+  <span class="token comment">// 使用默认的折行标准</span>
+  proseWrap<span class="token operator">:</span> <span class="token string">"preserve"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 根据显示样式决定 html 要不要折行</span>
+  htmlWhitespaceSensitivity<span class="token operator">:</span> <span class="token string">"css"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 换行符使用 lf</span>
+  endOfLine<span class="token operator">:</span> <span class="token string">"lf"</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h1>ESLint</h1>
+<p>ESLint 原生的规则和 <code>@typescript-eslint/eslint-plugin</code> 的规则太多了，而且原生的规则有一些在 TypeScript 中支持的不好，需要禁用掉。</p>
+<p>这里我推荐使用 <a href="https://github.com/AlloyTeam/eslint-config-alloy#typescript">AlloyTeam ESLint 规则中的 TypeScript 版本</a>，它已经为我们提供了一套完善的配置规则，并且与 Prettier 是完全兼容的（eslint-config-alloy 不包含任何代码格式的规则，代码格式的问题交给更专业的 Prettier 去处理）。</p>
+<p>安装</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev eslint typescript @typescript-eslint/parser @typescript-eslint/eslint-plugin eslint-config-alloy
+</code></pre>
+<p><strong>最新特性：eslint-config-alloy 现已支持 TypeScript 5.0</strong>
+如果你使用的是 TypeScript 4.0，请安装旧版 <code>npm install --save-dev eslint-config-alloy@4</code></p>
+<p><strong>最新特性：eslint-config-alloy 现已支持 Vue 3.0</strong>
+如果你使用的是 Vue 2.0，请安装旧版 <code>npm install --save-dev eslint-config-alloy@3</code></p>
+<p>AlloyTeam ESLint 规则不仅是一套先进的适用于 React/Vue/Typescript 项目的 ESLint 配置规范，而且也是你配置个性化 ESLint 规则的最佳参考。</p>
+<p>创建文件.eslintrc.js</p>
+<p>配置</p>
+<pre class="language-js"><code class="language-js">module<span class="token punctuation">.</span><span class="token property-access">exports</span> <span class="token operator">=</span> <span class="token punctuation">{</span>
+  <span class="token keyword">extends</span><span class="token operator">:</span> <span class="token punctuation">[</span><span class="token string">"alloy"</span><span class="token punctuation">,</span> <span class="token string">"alloy/typescript"</span><span class="token punctuation">]</span><span class="token punctuation">,</span>
+  env<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 您的环境变量（包含多个预定义的全局变量）</span>
+    <span class="token comment">// Your environments (which contains several predefined global variables)</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// browser: true,</span>
+    <span class="token comment">// node: true,</span>
+    <span class="token comment">// mocha: true,</span>
+    <span class="token comment">// jest: true,</span>
+    <span class="token comment">// jquery: true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  globals<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 您的全局变量（设置为 false 表示它不允许被重新赋值）</span>
+    <span class="token comment">// Your global variables (setting to false means it's not allowed to be reassigned)</span>
+    <span class="token comment">//</span>
+    <span class="token comment">// myGlobal: false</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  rules<span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token comment">// 自定义您的规则</span>
+    <span class="token comment">// Customize your rules</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<p>里面的 rules 配置跟 eslint 的配置一样，本身就是他的二次封装，所以都是支持的</p>
+<h1>检查 tsx</h1>
+<p>如果需要同时支持 tsx，需要安装</p>
+<pre class="language-bash"><code class="language-bash"><span class="token function">npm</span> <span class="token function">install</span> --save-dev eslint-plugin-react
+</code></pre>
+<h4 id="packagejson-%E4%B8%AD%E7%9A%84-scriptseslint-%E6%B7%BB%E5%8A%A0-tsx-%E5%90%8E%E7%BC%80">package.json 中的 scripts.eslint 添加 <code>.tsx</code> 后缀<a class="anchor" href="#packagejson-%E4%B8%AD%E7%9A%84-scriptseslint-%E6%B7%BB%E5%8A%A0-tsx-%E5%90%8E%E7%BC%80">§</a></h4>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"scripts"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"eslint"</span><span class="token operator">:</span> <span class="token string">"eslint src --ext .ts,.tsx"</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<h4 id="vscode-%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%B0%E5%A2%9E-typescript-react-%E6%A3%80%E6%9F%A5">VSCode 的配置中新增 typescript react 检查<a class="anchor" href="#vscode-%E7%9A%84%E9%85%8D%E7%BD%AE%E4%B8%AD%E6%96%B0%E5%A2%9E-typescript-react-%E6%A3%80%E6%9F%A5">§</a></h4>
+<pre class="language-json"><code class="language-json"><span class="token punctuation">{</span>
+  <span class="token property">"files.eol"</span><span class="token operator">:</span> <span class="token string">"\n"</span><span class="token punctuation">,</span>
+  <span class="token property">"editor.tabSize"</span><span class="token operator">:</span> <span class="token number">4</span><span class="token punctuation">,</span>
+  <span class="token property">"editor.formatOnSave"</span><span class="token operator">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  <span class="token property">"editor.defaultFormatter"</span><span class="token operator">:</span> <span class="token string">"esbenp.prettier-vscode"</span><span class="token punctuation">,</span>
+  <span class="token comment">// 启用保存时自动修复eslint,默认只支持.js文件</span>
+  <span class="token property">"editor.codeActionsOnSave"</span><span class="token operator">:</span> <span class="token punctuation">{</span>
+    <span class="token property">"source.fixAll.eslint"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token property">"eslint.validate"</span><span class="token operator">:</span> <span class="token punctuation">[</span>
+    <span class="token string">"javascript"</span><span class="token punctuation">,</span>
+    <span class="token string">"javascriptreact"</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"language"</span><span class="token operator">:</span> <span class="token string">"typescript"</span><span class="token punctuation">,</span>
+      <span class="token property">"autoFix"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">,</span>
+    <span class="token punctuation">{</span>
+      <span class="token property">"language"</span><span class="token operator">:</span> <span class="token string">"typescriptreact"</span><span class="token punctuation">,</span>
+      <span class="token property">"autoFix"</span><span class="token operator">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span>
+  <span class="token punctuation">]</span><span class="token punctuation">,</span>
+  <span class="token property">"typescript.tsdk"</span><span class="token operator">:</span> <span class="token string">"node_modules/typescript/lib"</span>
+<span class="token punctuation">}</span>
+</code></pre>
+<p>配置</p>
+<p><a href="https://github.com/AlloyTeam/eslint-config-alloy#typescript-react">https://github.com/AlloyTeam/eslint-config-alloy#typescript-react</a></p></article><div class="prev_next"><a class="prev button" href="/docs/vue3.html">«  VUE3 相关</a><a class="next button" href="/docs/redux.html">使用 Redux  »</a></div></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#%E6%8F%92%E4%BB%B6%E4%B8%8B%E8%BD%BD">插件下载</a></li><li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li></ol></nav></div></aside></section><footer>Power By <a href="https://github.com/JieHaoCai" target="_blank">JsonTsai</a></footer><script src="https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

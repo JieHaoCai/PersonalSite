@@ -1,0 +1,256 @@
+<!doctype html><html class=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="这是我的个人博客"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" property="og:title" content="VUE3 相关 · 叫我菜菜"/><meta data-react-helmet="true" property="og:description" content="这是我的个人博客"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" name="twitter:card" content="summary"/>
+<title data-react-helmet="true">VUE3 相关 · 叫我菜菜</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">叫我菜菜</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">叫我菜菜</a></h1></li><li class="hide_on_mobile"><a href="/docs/index.html">技术文档</a></li><li class="hide_on_mobile"><a href="/about/index.html">关于</a></li><li class="hide_on_mobile"><a href="https://github.com/xcatliu/pagic" target="_blank">本网站使用Pagic构建</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/JieHaoCai" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/docs/index.html" class="nav_link">介绍</a></li><li class=""><a href="/docs/vue3.html" class="nav_link active">VUE3 相关</a></li><li class=""><a href="/docs/codeRule.html" class="nav_link">前端代码规范插件配置</a></li><li class=""><a href="/docs/redux.html" class="nav_link">使用 Redux</a></li></ol></aside><section class="main"><div class="main_article"><article><h1>VUE3 相关</h1>
+<pre class="language-autoit"><code class="language-autoit"># npm <span class="token number">6</span><span class="token punctuation">.</span>x
+npm create vite<span class="token variable">@latest</span> 你的项目名称 <span class="token operator">-</span><span class="token operator">-</span>template vue
+
+# npm <span class="token number">7</span><span class="token operator">+</span><span class="token punctuation">,</span> extra double<span class="token operator">-</span>dash is needed<span class="token punctuation">:</span>
+npm create vite<span class="token variable">@latest</span> 你的项目名称 <span class="token operator">-</span><span class="token operator">-</span> <span class="token operator">-</span><span class="token operator">-</span>template vue
+
+# yarn
+yarn create vite 你的项目名称 <span class="token operator">-</span><span class="token operator">-</span>template vue
+
+# pnpm
+pnpm create vite 你的项目名称 <span class="token operator">-</span><span class="token operator">-</span>template vue
+</code></pre>
+<p>按照提示选择即可</p>
+<pre class="language-autoit"><code class="language-autoit">npm create vite<span class="token variable">@latest</span>
+</code></pre>
+<h1>使用 router</h1>
+<pre class="language-autoit"><code class="language-autoit">npm install vue<span class="token operator">-</span>router<span class="token variable">@4</span> <span class="token operator">-</span>S
+</code></pre>
+<h2 id="%E5%AE%89%E8%A3%85">安装<a class="anchor" href="#%E5%AE%89%E8%A3%85">§</a></h2>
+<pre class="language-autoit"><code class="language-autoit">npm install vue<span class="token operator">-</span>router<span class="token variable">@4</span> <span class="token operator">-</span>S
+</code></pre>
+<h2 id="%E9%85%8D%E7%BD%AE">配置<a class="anchor" href="#%E9%85%8D%E7%BD%AE">§</a></h2>
+<p>在 src 目录下新建一个 router 文件夹以及对应的 index.js 文件</p>
+<pre class="language-autoit"><code class="language-autoit">import { createRouter<span class="token punctuation">,</span> createWebHistory } from <span class="token string">"vue-router"</span><span class="token comment">;</span>
+import Home from <span class="token string">'../views/Home'</span>
+
+<span class="token keyword">const</span> routes <span class="token operator">=</span> <span class="token punctuation">[</span>
+    {
+        path<span class="token punctuation">:</span><span class="token string">'/'</span><span class="token punctuation">,</span>
+        name<span class="token punctuation">:</span><span class="token string">'home'</span><span class="token punctuation">,</span>
+        component<span class="token punctuation">:</span>Home
+    }
+<span class="token punctuation">]</span>
+
+<span class="token keyword">const</span> router <span class="token operator">=</span> <span class="token function">createRouter</span><span class="token punctuation">(</span>{
+    history<span class="token punctuation">:</span><span class="token function">createWebHistory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+    routes
+}<span class="token punctuation">)</span>
+
+export <span class="token keyword">default</span> router
+</code></pre>
+<h2 id="%E5%BC%95%E5%85%A5-router">引入 router<a class="anchor" href="#%E5%BC%95%E5%85%A5-router">§</a></h2>
+<p>在 main.js 中进行引入</p>
+<pre class="language-autoit"><code class="language-autoit">import router from <span class="token string">'./router'</span>
+<span class="token function">createApp</span><span class="token punctuation">(</span>App<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>router<span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">mount</span><span class="token punctuation">(</span><span class="token string">'#app'</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="%E4%BF%AE%E6%94%B9-appvue">修改 App.vue<a class="anchor" href="#%E4%BF%AE%E6%94%B9-appvue">§</a></h2>
+<pre class="language-javascript"><code class="language-javascript"><span class="token operator">&lt;</span>template<span class="token operator">></span>
+  <span class="token operator">&lt;</span>router<span class="token operator">-</span>view<span class="token operator">></span><span class="token operator">&lt;</span><span class="token operator">/</span>router<span class="token operator">-</span>view<span class="token operator">></span>
+<span class="token operator">&lt;</span><span class="token operator">/</span>template<span class="token operator">></span>
+</code></pre>
+<h1>使用 Pinia</h1>
+<p>对比 vuex 的优点：</p>
+<ol>
+<li>
+<p>​ 体积小</p>
+</li>
+<li>
+<p>只有 state、actions、gatter，没有 mutation，actions 可以做同步和异步的操作</p>
+</li>
+<li>
+<p>分模块不需要 module</p>
+</li>
+<li>
+<p>pinia 可以直接进行修改数据，不需要通过 mutation</p>
+</li>
+</ol>
+<p>官方文档：<a href="https://pinia.vuejs.org/zh/introduction.html">简介 | Pinia (vuejs.org)</a></p>
+<h2 id="%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">§</a></h2>
+<h2 id="%E5%AE%89%E8%A3%85-1">安装<a class="anchor" href="#%E5%AE%89%E8%A3%85-1">§</a></h2>
+<blockquote>
+<p>npm install pinia</p>
+</blockquote>
+<h2 id="%E5%88%9B%E5%BB%BA-store">创建 store<a class="anchor" href="#%E5%88%9B%E5%BB%BA-store">§</a></h2>
+<p>在根目录下面新建 index.js</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> createPinia <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"pinia"</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">import</span> <span class="token imports">piniaPluginPersistedstate</span> <span class="token keyword module">from</span> <span class="token string">"pinia-plugin-persistedstate"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> pinia <span class="token operator">=</span> <span class="token function">createPinia</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+pinia<span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>piniaPluginPersistedstate<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> pinia<span class="token punctuation">;</span>
+</code></pre>
+<h2 id="%E5%BC%95%E5%85%A5-mainjs">引入 main.js<a class="anchor" href="#%E5%BC%95%E5%85%A5-mainjs">§</a></h2>
+<pre class="language-autoit"><code class="language-autoit">import pinia from <span class="token string">'./store'</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>pinia<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6">创建对应文件<a class="anchor" href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6">§</a></h2>
+<p>在 store 中创建 shop.js</p>
+<pre class="language-autoit"><code class="language-autoit">import { defineStore } from <span class="token string">"pinia"</span><span class="token comment">;</span>
+
+export <span class="token keyword">const</span> useShopStore  <span class="token operator">=</span> <span class="token function">defineStore</span><span class="token punctuation">(</span><span class="token string">'shop'</span><span class="token punctuation">,</span>{
+    state<span class="token punctuation">:</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span>{
+        return {
+            num<span class="token punctuation">:</span><span class="token number">0</span><span class="token punctuation">,</span>
+            name<span class="token punctuation">:</span><span class="token string">'张三'</span>
+        }
+    }<span class="token punctuation">,</span>
+    getters<span class="token punctuation">:</span>{
+        doubleCount<span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> state<span class="token punctuation">.</span>num <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token function">doublePlusOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span>{
+            return this<span class="token punctuation">.</span>doubleCount <span class="token operator">+</span> <span class="token number">1</span>
+          }<span class="token punctuation">,</span>
+    }<span class="token punctuation">,</span>
+    actions<span class="token punctuation">:</span>{
+                <span class="token function">handleCi</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>{
+                    this<span class="token punctuation">.</span>num <span class="token operator">+=</span>val
+                }
+    }
+}<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8">在项目中使用<a class="anchor" href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8">§</a></h2>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports"><span class="token punctuation">{</span> useShopStore <span class="token punctuation">}</span></span> <span class="token keyword module">from</span> <span class="token string">"../../store/user.js"</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> shopstore <span class="token operator">=</span> <span class="token function">useShopStore</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">let</span> <span class="token punctuation">{</span> name<span class="token punctuation">,</span> num <span class="token punctuation">}</span> <span class="token operator">=</span> shopstore<span class="token punctuation">;</span> <span class="token comment">//这里的name和num就是我们定义的数据</span>
+</code></pre>
+<h3 id="%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE">修改数据<a class="anchor" href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE">§</a></h3>
+<h4 id="%E5%8D%95%E7%8B%AC%E4%BF%AE%E6%94%B9">单独修改<a class="anchor" href="#%E5%8D%95%E7%8B%AC%E4%BF%AE%E6%94%B9">§</a></h4>
+<p>我们需要引入<strong>storeToRefs</strong>，把数据变成响应式数据，通过 value 进行修改</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword">let</span> <span class="token punctuation">{</span> num<span class="token punctuation">,</span> name <span class="token punctuation">}</span> <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>shopstore<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword">const</span> <span class="token function-variable function">changeName</span> <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+  name<span class="token punctuation">.</span><span class="token property-access">value</span> <span class="token operator">=</span> <span class="token string">"李四"</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">;</span>
+</code></pre>
+<h4 id="%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9">批量修改<a class="anchor" href="#%E6%89%B9%E9%87%8F%E4%BF%AE%E6%94%B9">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">   shopstore<span class="token punctuation">.</span>$<span class="token function">patch</span><span class="token punctuation">(</span>state<span class="token operator">=</span><span class="token operator">></span>{
+        state<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">'李四'</span>
+        state<span class="token punctuation">.</span>num <span class="token operator">=</span> <span class="token number">11</span>
+    }<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="gatter">Gatter<a class="anchor" href="#gatter">§</a></h3>
+<p>Getter 完全等同于 store 的 state 的<a href="https://cn.vuejs.org/guide/essentials/computed.html">计算属性</a>。可以通过 <code>defineStore()</code> 中的 <code>getters</code> 属性来定义它们。<strong>推荐</strong>使用箭头函数，并且它将接收 <code>state</code> 作为第一个参数：</p>
+<p>gatter 是有缓存的</p>
+<pre class="language-autoit"><code class="language-autoit">    getters<span class="token punctuation">:</span>{
+        doubleCount<span class="token punctuation">:</span> <span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> state<span class="token punctuation">.</span>num <span class="token operator">*</span> <span class="token number">2</span><span class="token punctuation">,</span>
+        <span class="token function">doublePlusOne</span><span class="token punctuation">(</span><span class="token punctuation">)</span>{
+            return this<span class="token punctuation">.</span>doubleCount <span class="token operator">+</span> <span class="token number">1</span>
+          }<span class="token punctuation">,</span>
+    }<span class="token punctuation">,</span>
+</code></pre>
+<pre class="language-autoit"><code class="language-autoit">    let {num<span class="token punctuation">,</span>name<span class="token punctuation">,</span>doubleCount} <span class="token operator">=</span> <span class="token function">storeToRefs</span><span class="token punctuation">(</span>store<span class="token punctuation">)</span>
+</code></pre>
+<h3 id="actions">Actions<a class="anchor" href="#actions">§</a></h3>
+<p>直接使用 store.方法名即可</p>
+<pre class="language-autoit"><code class="language-autoit">  actions<span class="token punctuation">:</span>{
+                <span class="token function">handleCi</span><span class="token punctuation">(</span>val<span class="token punctuation">)</span>{
+                    this<span class="token punctuation">.</span>num <span class="token operator">+=</span>val
+                }
+    }
+</code></pre>
+<pre class="language-autoit"><code class="language-autoit"><span class="token operator">&lt;</span>button <span class="token variable">@click</span><span class="token operator">=</span><span class="token string">"useAction"</span><span class="token operator">></span>使用action<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">></span>
+
+<span class="token keyword">const</span> useAction<span class="token operator">=</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">=</span><span class="token operator">></span>{
+    shopstore<span class="token punctuation">.</span><span class="token function">handleCi</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span>
+}
+</code></pre>
+<h2 id="%E6%A8%A1%E5%9D%97%E5%8C%96">模块化<a class="anchor" href="#%E6%A8%A1%E5%9D%97%E5%8C%96">§</a></h2>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230314103941461.png" alt="image-20230314103941461"></p>
+<p>只需要引入不同的文件即可</p>
+<h2 id="%E6%8C%81%E4%B9%85%E5%8C%96">持久化<a class="anchor" href="#%E6%8C%81%E4%B9%85%E5%8C%96">§</a></h2>
+<p>我们使用插件进行持久化</p>
+<h2 id="%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6">下载插件<a class="anchor" href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6">§</a></h2>
+<pre class="language-autoit"><code class="language-autoit"> npm install pinia<span class="token operator">-</span>plugin<span class="token operator">-</span>persistedstate
+</code></pre>
+<h2 id="%E5%9C%A8-store-%E4%B8%AD%E7%9A%84-indexjs-%E8%BF%9B%E8%A1%8C%E5%BC%95%E5%85%A5">在 store 中的 index.js 进行引入<a class="anchor" href="#%E5%9C%A8-store-%E4%B8%AD%E7%9A%84-indexjs-%E8%BF%9B%E8%A1%8C%E5%BC%95%E5%85%A5">§</a></h2>
+<pre class="language-autoit"><code class="language-autoit">  import piniaPluginPersistedstate from <span class="token string">'pinia-plugin-persistedstate'</span>
+
+    pinia<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span>piniaPluginPersistedstate<span class="token punctuation">)</span>
+</code></pre>
+<h2 id="%E4%BD%BF%E7%94%A8%E6%8C%81%E4%B9%85%E5%8C%96">使用持久化<a class="anchor" href="#%E4%BD%BF%E7%94%A8%E6%8C%81%E4%B9%85%E5%8C%96">§</a></h2>
+<p>在需要使用持久化的对应 store 文件中加入</p>
+<pre class="language-autoit"><code class="language-autoit">    <span class="token operator">/</span><span class="token operator">/</span>开启持久化
+    persist<span class="token punctuation">:</span>{
+        enable<span class="token punctuation">:</span><span class="token boolean">true</span>
+    }
+</code></pre>
+<p>他会在浏览器的本地存储中，以你设置的 storeId 作为 Key，value 为你的 state</p>
+<p><img src="C:%5CUsers%5CAdministrator%5CAppData%5CRoaming%5CTypora%5Ctypora-user-images%5Cimage-20230314105157778.png" alt="image-20230314105157778"></p>
+<h1>设置代理，解决跨域问题</h1>
+<p>在 vite.config.js 中</p>
+<pre class="language-autoit"><code class="language-autoit">import { defineConfig } from <span class="token string">'vite'</span>
+import vue from <span class="token string">'@vitejs/plugin-vue'</span>
+import AutoImport from <span class="token string">'unplugin-auto-import/vite'</span>
+export <span class="token keyword">default</span> <span class="token function">defineConfig</span><span class="token punctuation">(</span>{
+  	plugins<span class="token punctuation">:</span> <span class="token punctuation">[</span>
+  		<span class="token function">vue</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">,</span>
+  		<span class="token function">AutoImport</span><span class="token punctuation">(</span>{
+  			imports<span class="token punctuation">:</span><span class="token punctuation">[</span><span class="token string">'vue'</span><span class="token punctuation">,</span><span class="token string">'vue-router'</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token operator">/</span>自动导入vue和vue<span class="token operator">-</span>router相关函数
+  		}<span class="token punctuation">)</span>
+  	<span class="token punctuation">]</span><span class="token punctuation">,</span>
+ 	server<span class="token punctuation">:</span>{
+		proxy<span class="token punctuation">:</span>{
+			<span class="token string">'/api'</span><span class="token punctuation">:</span><span class="token string">'<a class="token url-link" href="http://testapi.xuexiluxian.cn">http://testapi.xuexiluxian.cn</a>'</span>
+		}
+	}
+}<span class="token punctuation">)</span>
+</code></pre>
+<h1>axios 二次封装</h1>
+<p>新建一个 utils 文件夹，新建 request.js 在里面进行我们的 axios 二次封装</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports">axios</span> <span class="token keyword module">from</span> <span class="token string">"axios"</span><span class="token punctuation">;</span>
+
+<span class="token comment">//1. 创建axios对象</span>
+<span class="token keyword">const</span> http <span class="token operator">=</span> axios<span class="token punctuation">.</span><span class="token method function property-access">create</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//2. 请求拦截器</span>
+http<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">request</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">config</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> config<span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token comment">//3. 响应拦截器</span>
+http<span class="token punctuation">.</span><span class="token property-access">interceptors</span><span class="token punctuation">.</span><span class="token property-access">response</span><span class="token punctuation">.</span><span class="token method function property-access">use</span><span class="token punctuation">(</span>
+  <span class="token punctuation">(</span><span class="token parameter">response</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token comment">//判断code码</span>
+    <span class="token keyword control-flow">return</span> response<span class="token punctuation">.</span><span class="token property-access">data</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">,</span>
+  <span class="token punctuation">(</span><span class="token parameter">error</span><span class="token punctuation">)</span> <span class="token arrow operator">=></span> <span class="token punctuation">{</span>
+    <span class="token keyword control-flow">return</span> <span class="token known-class-name class-name">Promise</span><span class="token punctuation">.</span><span class="token method function property-access">reject</span><span class="token punctuation">(</span>error<span class="token punctuation">)</span><span class="token punctuation">;</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword module">default</span> http<span class="token punctuation">;</span>
+</code></pre>
+<p>请求 api</p>
+<pre class="language-javascript"><code class="language-javascript"><span class="token keyword module">import</span> <span class="token imports">request</span> <span class="token keyword module">from</span> <span class="token string">"../utils/request"</span><span class="token punctuation">;</span>
+
+<span class="token keyword module">export</span> <span class="token keyword">function</span> <span class="token function">mostNew</span><span class="token punctuation">(</span><span class="token parameter">data</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword control-flow">return</span> <span class="token function">request</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+    url<span class="token operator">:</span> <span class="token string">"/api/course/mostNew"</span><span class="token punctuation">,</span>
+    method<span class="token operator">:</span> <span class="token string">"post"</span><span class="token punctuation">,</span>
+    data<span class="token punctuation">,</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span>
+</code></pre></article><div class="prev_next"><a class="prev button" href="/docs/index.html">«  介绍</a><a class="next button" href="/docs/codeRule.html">前端代码规范插件配置  »</a></div></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#%E5%AE%89%E8%A3%85">安装</a></li><li><a href="#%E9%85%8D%E7%BD%AE">配置</a></li><li><a href="#%E5%BC%95%E5%85%A5-router">引入 router</a></li><li><a href="#%E4%BF%AE%E6%94%B9-appvue">修改 App.vue</a></li><li><a href="#%E4%BD%BF%E7%94%A8%E6%96%B9%E6%B3%95">使用方法</a></li><li><a href="#%E5%AE%89%E8%A3%85-1">安装</a></li><li><a href="#%E5%88%9B%E5%BB%BA-store">创建 store</a></li><li><a href="#%E5%BC%95%E5%85%A5-mainjs">引入 main.js</a></li><li><a href="#%E5%88%9B%E5%BB%BA%E5%AF%B9%E5%BA%94%E6%96%87%E4%BB%B6">创建对应文件</a></li><li><a href="#%E5%9C%A8%E9%A1%B9%E7%9B%AE%E4%B8%AD%E4%BD%BF%E7%94%A8">在项目中使用</a><ol><li><a href="#%E4%BF%AE%E6%94%B9%E6%95%B0%E6%8D%AE">修改数据</a><ol></ol></li><li><a href="#gatter">Gatter</a></li><li><a href="#actions">Actions</a></li></ol></li><li><a href="#%E6%A8%A1%E5%9D%97%E5%8C%96">模块化</a></li><li><a href="#%E6%8C%81%E4%B9%85%E5%8C%96">持久化</a></li><li><a href="#%E4%B8%8B%E8%BD%BD%E6%8F%92%E4%BB%B6">下载插件</a></li><li><a href="#%E5%9C%A8-store-%E4%B8%AD%E7%9A%84-indexjs-%E8%BF%9B%E8%A1%8C%E5%BC%95%E5%85%A5">在 store 中的 index.js 进行引入</a></li><li><a href="#%E4%BD%BF%E7%94%A8%E6%8C%81%E4%B9%85%E5%8C%96">使用持久化</a></li></ol></nav></div></aside></section><footer>Power By <a href="https://github.com/JieHaoCai" target="_blank">JsonTsai</a></footer><script src="https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>

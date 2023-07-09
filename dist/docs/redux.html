@@ -1,0 +1,146 @@
+<!doctype html><html class=""><head>
+<meta data-react-helmet="true" charset="utf-8"/><meta data-react-helmet="true" http-equiv="x-ua-compatible" content="ie=edge"/><meta data-react-helmet="true" name="description" content="这是我的个人博客"/><meta data-react-helmet="true" name="viewport" content="width=device-width, initial-scale=1"/><meta data-react-helmet="true" property="og:title" content="使用 Redux · 叫我菜菜"/><meta data-react-helmet="true" property="og:description" content="这是我的个人博客"/><meta data-react-helmet="true" property="og:type" content="article"/><meta data-react-helmet="true" name="twitter:card" content="summary"/>
+<title data-react-helmet="true">使用 Redux · 叫我菜菜</title>
+<link data-react-helmet="true" rel="stylesheet" href="/assets/index.css"/><link data-react-helmet="true" id="prismTheme" rel="stylesheet" href="/assets/prism.css"/>
+<script data-react-helmet="true" >
+    const shouldSetIsDark = document.cookie.includes('is_dark=1') ? true : document.cookie.includes('is_dark=0') ? false : window.matchMedia('(prefers-color-scheme: dark)').matches;
+    if (shouldSetIsDark) {
+      document.documentElement.classList.add('is_dark');
+      document.getElementById('prismTheme').href = "/assets/prism_tomorrow.css";
+    }
+  </script>
+</head><body><header><h1 class="hide_on_mobile"><a href="/">叫我菜菜</a></h1><nav><ul><li class="show_on_mobile flex_center"><a class="czs-menu-l" href="#" style="background-image:url(&quot;/assets/czs-menu-l.svg&quot;)"></a></li><li class="show_on_mobile"><h1 class="mobile_title"><a href="/">叫我菜菜</a></h1></li><li class="hide_on_mobile"><a href="/docs/index.html">技术文档</a></li><li class="hide_on_mobile"><a href="/about/index.html">关于</a></li><li class="hide_on_mobile"><a href="https://github.com/xcatliu/pagic" target="_blank">本网站使用Pagic构建</a></li><li style="flex-grow:1"></li><li class="flex_center"><a class="czs-github-logo" href="https://github.com/JieHaoCai" target="_blank" style="background-image:url(&quot;/assets/czs-github-logo.svg&quot;)"></a></li><li class="toggle_dark flex_center"><span class="czs-sun" style="background-image:url(&quot;/assets/czs-sun.svg&quot;)"></span><span class="czs-sun-l" style="background-image:url(&quot;/assets/czs-sun-l.svg&quot;)"></span><span class="czs-moon" style="background-image:url(&quot;/assets/czs-moon.svg&quot;)"></span><span class="czs-moon-l" style="background-image:url(&quot;/assets/czs-moon-l.svg&quot;)"></span></li></ul></nav></header><aside class="sidebar"><ol class="list_style_none"><li class=""><a href="/docs/index.html" class="nav_link">介绍</a></li><li class=""><a href="/docs/vue3.html" class="nav_link">VUE3 相关</a></li><li class=""><a href="/docs/codeRule.html" class="nav_link">前端代码规范插件配置</a></li><li class=""><a href="/docs/redux.html" class="nav_link active">使用 Redux</a></li></ol></aside><section class="main"><div class="main_article"><article><h1>使用 Redux</h1>
+<h2 id="%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">安装插件<a class="anchor" href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">§</a></h2>
+<p>react-redux</p>
+<p>redux:(react-redux 需要依赖于 redux 的 store)</p>
+<p>redux-thunk：异步</p>
+<p>redux-devtools-extension:调试工具</p>
+<h2 id="%E9%85%8D%E7%BD%AE-store">配置 store<a class="anchor" href="#%E9%85%8D%E7%BD%AE-store">§</a></h2>
+<p>在 src 文件下，新建一个 store 的文件夹，里面需要有以下文件：</p>
+<ul>
+<li>reducers 文件夹（存放要完成的工作，本质上是一个函数）</li>
+<li>actions 文件夹(存放要完成工作需要准备的东西，本质上是一个函数)</li>
+<li>actionsTypes 文件夹（统一管理 actions 的动作类型）</li>
+<li>index.js</li>
+</ul>
+<h3 id="indexjs%E6%A8%A1%E6%9D%BF">index.js（模板）<a class="anchor" href="#indexjs%E6%A8%A1%E6%9D%BF">§</a></h3>
+<p>模板（可以直接复制使用）</p>
+<pre class="language-autoit"><code class="language-autoit">import { legacy_createStore as createStore<span class="token punctuation">,</span> applyMiddleware } from <span class="token string">'redux'</span><span class="token comment">;</span>
+import thunk from <span class="token string">'redux-thunk'</span><span class="token comment">;</span>
+import reducer from <span class="token string">'./reducers'</span><span class="token comment">;</span>
+import {composeWithDevTools} from <span class="token string">'redux-devtools-extension'</span>
+export <span class="token keyword">default</span> <span class="token function">createStore</span><span class="token punctuation">(</span>reducer<span class="token punctuation">,</span><span class="token function">composeWithDevTools</span><span class="token punctuation">(</span><span class="token function">applyMiddleware</span><span class="token punctuation">(</span>thunk<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<h2 id="reducers">reducers<a class="anchor" href="#reducers">§</a></h2>
+<ul>
+<li>index.js(统一管理所有的 reduces)</li>
+<li>动作.js(名字按照你要执行的工作来命名)，例如 add.js</li>
+</ul>
+<h4 id="indexjs%E6%A8%A1%E6%9D%BF-1">index.js(模板)<a class="anchor" href="#indexjs%E6%A8%A1%E6%9D%BF-1">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">import { combineReducers } from <span class="token string">"redux"</span><span class="token comment">;</span>
+import a from <span class="token string">"./a"</span><span class="token comment">;</span>
+import b from <span class="token string">"./b"</span><span class="token comment">;</span>
+import xml from <span class="token string">"./xmlForm"</span><span class="token comment">;</span>
+import xmlModifyForm from <span class="token string">"./xmlModifyForm"</span><span class="token comment">;</span>
+export <span class="token keyword">default</span> <span class="token function">combineReducers</span><span class="token punctuation">(</span>{
+    a<span class="token punctuation">,</span>
+    b<span class="token punctuation">,</span>
+    xml<span class="token punctuation">,</span>
+    xmlModifyForm
+  }<span class="token punctuation">)</span><span class="token comment">;</span>
+</code></pre>
+<p>引入所有的动作文件并统一的暴露出去</p>
+<h4 id="ajs">a.js<a class="anchor" href="#ajs">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">import <span class="token operator">*</span> as types from <span class="token string">"../actionTypes"</span>
+<span class="token keyword">const</span> initState <span class="token operator">=</span> {
+    name<span class="token punctuation">:</span> <span class="token string">"xiaoming"</span>
+}
+
+export <span class="token keyword">default</span> function <span class="token function">a</span><span class="token punctuation">(</span>state <span class="token operator">=</span> initState<span class="token punctuation">,</span> action<span class="token punctuation">)</span> {
+    <span class="token keyword">switch</span> <span class="token punctuation">(</span>action<span class="token punctuation">.</span>type<span class="token punctuation">)</span> {
+        <span class="token keyword">case</span> types<span class="token punctuation">.</span>CHANGE_NAME<span class="token punctuation">:</span>
+            return {
+                <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>state<span class="token punctuation">,</span>
+                name<span class="token punctuation">:</span> action<span class="token punctuation">.</span>params<span class="token punctuation">,</span>
+            }<span class="token comment">;</span>
+
+        <span class="token keyword">default</span><span class="token punctuation">:</span>
+            return state<span class="token comment">;</span>
+    }
+}
+</code></pre>
+<p>接收两个参数，一个是初始值状态 state,另一个是要完成的动作</p>
+<h2 id="action">action<a class="anchor" href="#action">§</a></h2>
+<h4 id="indexjs%E6%A8%A1%E6%9D%BF-2">index.js(模板)<a class="anchor" href="#indexjs%E6%A8%A1%E6%9D%BF-2">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">import {changeName} from <span class="token string">"./a"</span>
+import {changeAge} from <span class="token string">"./b"</span>
+import {changeXml<span class="token punctuation">,</span>changeXmlModify} from <span class="token string">"./xmlForm"</span>
+
+export {
+    changeName<span class="token punctuation">,</span>
+    changeAge<span class="token punctuation">,</span>
+    changeXml<span class="token punctuation">,</span>
+    changeXmlModify
+}
+</code></pre>
+<p>接收所有动作文件的动作，并统一暴露出去</p>
+<h4 id="ajs-1">a.js<a class="anchor" href="#ajs-1">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">import <span class="token operator">*</span> as types from <span class="token string">"../actionTypes"</span><span class="token comment">;</span>
+
+export <span class="token keyword">const</span> changeName <span class="token operator">=</span> <span class="token punctuation">(</span>params<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span> {
+    return {
+      type<span class="token punctuation">:</span> types<span class="token punctuation">.</span>CHANGE_NAME<span class="token punctuation">,</span>
+      params
+    }<span class="token comment">;</span>
+  }
+</code></pre>
+<p><strong>注意：return 后面一定要跟花括号，否则报错</strong></p>
+<h2 id="actiontypes%E5%8F%AF%E4%BB%A5%E4%B8%8D%E8%A6%81">actionTypes(可以不要)<a class="anchor" href="#actiontypes%E5%8F%AF%E4%BB%A5%E4%B8%8D%E8%A6%81">§</a></h2>
+<h4 id="indexjs">index.js<a class="anchor" href="#indexjs">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">import {CHANGE_NAME} from <span class="token string">"./a"</span><span class="token comment">;</span>
+import {CHANGE_AGE} from <span class="token string">"./b"</span><span class="token comment">;</span>
+import {CHANGE_XML<span class="token punctuation">,</span>CHANGE_XML_Modify} from <span class="token string">"./xmlForm"</span><span class="token comment">;</span>
+
+export {
+    CHANGE_NAME<span class="token punctuation">,</span>
+    CHANGE_AGE<span class="token punctuation">,</span>
+    CHANGE_XML<span class="token punctuation">,</span>
+    CHANGE_XML_Modify
+}
+</code></pre>
+<h4 id="ajs-2">a.js<a class="anchor" href="#ajs-2">§</a></h4>
+<pre class="language-autoit"><code class="language-autoit">export <span class="token keyword">const</span> CHANGE_NAME <span class="token operator">=</span>  <span class="token string">"CHANGE_NAME"</span>
+
+
+</code></pre>
+<h1>重要</h1>
+<p>在 App.js 中</p>
+<pre class="language-autoit"><code class="language-autoit">import { Provider } from <span class="token string">'react-redux'</span><span class="token comment">;</span>
+import store from <span class="token string">"./store"</span><span class="token comment">;</span>
+<span class="token function">render</span><span class="token punctuation">(</span><span class="token punctuation">)</span> {
+    return <span class="token punctuation">(</span>
+      <span class="token operator">&lt;</span>ConfigProvider locale<span class="token operator">=</span>{zhCN}<span class="token operator">></span>
+        <span class="token operator">&lt;</span>Provider store<span class="token operator">=</span>{store}<span class="token operator">></span>
+          <span class="token operator">&lt;</span>Router <span class="token operator">/</span><span class="token operator">></span>
+        <span class="token operator">&lt;</span><span class="token operator">/</span>Provider<span class="token operator">></span>
+      <span class="token operator">&lt;</span><span class="token operator">/</span>ConfigProvider<span class="token operator">></span>
+
+    <span class="token punctuation">)</span><span class="token comment">;</span>
+  }
+
+</code></pre>
+<h2 id="%E4%BD%BF%E7%94%A8">使用<a class="anchor" href="#%E4%BD%BF%E7%94%A8">§</a></h2>
+<h3 id="%E6%8E%A5%E6%94%B6%E6%96%B9">接收方<a class="anchor" href="#%E6%8E%A5%E6%94%B6%E6%96%B9">§</a></h3>
+<p>使用 useSelector</p>
+<pre class="language-autoit"><code class="language-autoit">import { useSelector } from <span class="token string">'react-redux'</span>
+<span class="token keyword">const</span> A <span class="token operator">=</span> <span class="token function">useSelector</span><span class="token punctuation">(</span><span class="token punctuation">(</span>state<span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">></span>state<span class="token punctuation">.</span>a<span class="token punctuation">)</span>
+</code></pre>
+<p>useSelector(state=&gt;state.reducers 中的文件名)，然后使用一个变量去接收</p>
+<p>这样变量就能拿到 store 里面对应文件中的所有状态</p>
+<h3 id="%E5%8F%91%E9%80%81%E6%96%B9">发送方<a class="anchor" href="#%E5%8F%91%E9%80%81%E6%96%B9">§</a></h3>
+<pre class="language-autoit"><code class="language-autoit">import { useDispatch } from <span class="token string">'react-redux'</span>
+import { changeXmlModify } from <span class="token string">'../../../../store/actions'</span>
+<span class="token keyword">const</span> dispatch <span class="token operator">=</span> <span class="token function">useDispatch</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token function">dispatch</span><span class="token punctuation">(</span><span class="token function">changeXmlModify</span><span class="token punctuation">(</span>campaignForm<span class="token punctuation">.</span>xml<span class="token punctuation">)</span><span class="token punctuation">)</span>
+</code></pre>
+<p>useDispatch(action 名称（参数）)</p></article><div class="prev_next"><a class="prev button" href="/docs/codeRule.html">«  前端代码规范插件配置</a></div></div><aside class="main_toc_container nav_link_container"><div class="main_toc"><nav class="toc"><ol><li><a href="#%E5%AE%89%E8%A3%85%E6%8F%92%E4%BB%B6">安装插件</a></li><li><a href="#%E9%85%8D%E7%BD%AE-store">配置 store</a><ol><li><a href="#indexjs%E6%A8%A1%E6%9D%BF">index.js（模板）</a></li></ol></li><li><a href="#reducers">reducers</a><ol></ol></li><li><a href="#action">action</a><ol></ol></li><li><a href="#actiontypes%E5%8F%AF%E4%BB%A5%E4%B8%8D%E8%A6%81">actionTypes(可以不要)</a><ol></ol></li><li><a href="#%E4%BD%BF%E7%94%A8">使用</a><ol><li><a href="#%E6%8E%A5%E6%94%B6%E6%96%B9">接收方</a></li><li><a href="#%E5%8F%91%E9%80%81%E6%96%B9">发送方</a></li></ol></li></ol></nav></div></aside></section><footer>Power By <a href="https://github.com/JieHaoCai" target="_blank">JsonTsai</a></footer><script src="https://cdn.pagic.org/react@18.2.0/umd/react.production.min.js"></script><script src="https://cdn.pagic.org/react-dom@18.2.0/umd/react-dom.production.min.js"></script><script type="module" src="/index.js"></script></body></html>
